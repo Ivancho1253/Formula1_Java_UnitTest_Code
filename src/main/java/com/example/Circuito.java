@@ -5,18 +5,21 @@ public class Circuito {
     private String nombre;
     private int longitud;
     private int vueltasCantidad;
+    private SponsorContrato sponsorC;
 
-    public Circuito(String nombre, int longitud, int vueltasCantidad) {
+    public Circuito(String nombre, int longitud, int vueltasCantidad,
+                    SponsorContrato sponsorC) {
         setNombre(nombre);
         setLongitud(longitud);
         setVueltasCantidad(vueltasCantidad);
+        setSponsorC(sponsorC);
     }
 
     public String getNombre() {
         return nombre;
     }    
 
-    public void setNombre(String nombre) {
+    private void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -24,7 +27,7 @@ public class Circuito {
         return longitud;
     }
 
-    public void setLongitud(int longitud) {
+    private void setLongitud(int longitud) {
         this.longitud = longitud;
     }
 
@@ -32,7 +35,15 @@ public class Circuito {
         return vueltasCantidad;
     }
 
-    public void setVueltasCantidad(int vueltasCantidad) {
+    private void setVueltasCantidad(int vueltasCantidad) {
         this.vueltasCantidad = vueltasCantidad;
+    }
+
+    public SponsorContrato getSponsorC() {
+        return sponsorC;
+    }
+
+    private void setSponsorC(SponsorContrato sponsorC) {
+        this.sponsorC = sponsorC;
     }
 }

@@ -16,19 +16,19 @@ public class Carrera {
     public String getFecha() {
         return fecha;
     }
-    public void setFecha(String fecha) {
+    private void setFecha(String fecha) {
         this.fecha = fecha;
     }
     public Circuito getCircuito() {
         return circuito;
     }
-    public void setCircuito(Circuito circuito) {
+    private void setCircuito(Circuito circuito) {
         this.circuito = circuito;
     }
     public ArrayList <Piloto> getPilotos() {
         return pilotos;
     }
-    public void setPilotos(ArrayList <Piloto> pilotos) {
+    private void setPilotos(ArrayList <Piloto> pilotos) {
         this.pilotos = pilotos;
     }
 }

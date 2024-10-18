@@ -7,19 +7,22 @@ public class Equipo {
     private ArrayList <Piloto> pilotos;
     private ArrayList <Mecanico> mecanicos;
     private Ingeniero ingenieroPrincipal;
+    private SponsorContrato sponsorE;
 
-    public Equipo(String nombre, ArrayList <Piloto> pilotos, ArrayList <Mecanico> mecanicos, Ingeniero ingenieroPrincipal) {
+    public Equipo(String nombre, ArrayList <Piloto> pilotos, ArrayList <Mecanico> mecanicos,
+                Ingeniero ingenieroPrincipal, SponsorContrato sponsorE) {
         setNombre(nombre);
         setPilotos(pilotos);
         setMecanicos(mecanicos);
         setIngenieroPrincipal(ingenieroPrincipal);
+        setSponsorE(sponsorE);
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    private void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -27,7 +30,7 @@ public class Equipo {
         return pilotos;
     }   
 
-    public void setPilotos(ArrayList <Piloto> pilotos) {
+    private void setPilotos(ArrayList <Piloto> pilotos) {
         this.pilotos = pilotos;
     }
 
@@ -35,7 +38,7 @@ public class Equipo {
         return mecanicos;
     }
 
-    public void setMecanicos(ArrayList <Mecanico> mecanicos) {
+    private void setMecanicos(ArrayList <Mecanico> mecanicos) {
         this.mecanicos = mecanicos;
     }
 
@@ -43,7 +46,15 @@ public class Equipo {
         return ingenieroPrincipal;
     }
 
-    public void setIngenieroPrincipal(Ingeniero ingenieroPrincipal) {
+    private void setIngenieroPrincipal(Ingeniero ingenieroPrincipal) {
         this.ingenieroPrincipal = ingenieroPrincipal;
+    }
+
+    public SponsorContrato getSponsorE() {
+        return sponsorE;
+    }
+
+    private void setSponsorE(SponsorContrato sponsorE) {
+        this.sponsorE = sponsorE;
     }
 }
