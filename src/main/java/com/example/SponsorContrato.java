@@ -7,6 +7,7 @@ public class SponsorContrato {
     private String fechaHasta;
     private Sponsor sponsor;
 
+
     public SponsorContrato(String ubicacion, String fechaDesde, String fechaHasta, Sponsor sponsor) {
         setUbicacion(ubicacion);
         setFechaDesde(fechaDesde);

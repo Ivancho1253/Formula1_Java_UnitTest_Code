@@ -1,15 +1,16 @@
 package com.example;
+import java.util.List;
 
 public interface ISponsoreable {
     
     //public SponsorContrato sponsorContrato;
     
-    public void getSponsors();
-
+    public List <SponsorContrato> getSponsors();
+   
     public void agregarSponsor(SponsorContrato sponsorContrato);
 
-    public void removerSponsor(Sponsor sponsor);
+    public void removerSponsor();
 
-    public void sponsorHabilitados();
+    public int sponsorHabilitados();
 
 }

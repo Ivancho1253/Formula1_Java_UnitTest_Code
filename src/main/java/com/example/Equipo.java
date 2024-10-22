@@ -1,21 +1,32 @@
 package com.example;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Equipo {
+public class Equipo
+            implements ISponsoreable {
     
     private String nombre;
     private ArrayList <Piloto> pilotos;
     private ArrayList <Mecanico> mecanicos;
     private Ingeniero ingenieroPrincipal;
-    private SponsorContrato sponsorE;
+
+    //Lista donde se almacenan todos los sponsors que tiene el equipo.
+    private List <SponsorContrato> sponsorE;
+
+    private List <SponsorContrato> sponsorsHabilitados = new ArrayList<>();
+
+    public Equipo(){
+        this.sponsorE = new ArrayList<>();
+    }
 
     public Equipo(String nombre, ArrayList <Piloto> pilotos, ArrayList <Mecanico> mecanicos,
-                Ingeniero ingenieroPrincipal, SponsorContrato sponsorE) {
+                Ingeniero ingenieroPrincipal){
         setNombre(nombre);
         setPilotos(pilotos);
         setMecanicos(mecanicos);
         setIngenieroPrincipal(ingenieroPrincipal);
-        setSponsorE(sponsorE);
+
+        this.sponsorE = sponsorE != null ? sponsorE : new ArrayList<>();
     }
 
     public String getNombre() {
@@ -50,11 +61,43 @@ public class Equipo {
         this.ingenieroPrincipal = ingenieroPrincipal;
     }
 
-    public SponsorContrato getSponsorE() {
+    public List <SponsorContrato> getSponsorE() {
         return sponsorE;
     }
 
-    private void setSponsorE(SponsorContrato sponsorE) {
-        this.sponsorE = sponsorE;
+    public void agregarSponsorE (SponsorContrato sponsorContrato) {
+        sponsorE.add(sponsorContrato);
     }
+
+    //////////////   INTERFAZ   /////////////////
+
+    @Override
+    public List <SponsorContrato> getSponsors(){
+        return sponsorE;
+    }
+
+    @Override
+    public void agregarSponsor(SponsorContrato sponsorContrato){
+        sponsorE.add(sponsorContrato);
+    }
+
+    @Override
+    public void removerSponsor(){
+        sponsorE.clear();
+    }
+
+    @Override
+    public int sponsorHabilitados(){
+
+        for (SponsorContrato sponsorContrato : sponsorE) {
+            if (sponsorContrato.getFechaHasta() != null) {
+                sponsorsHabilitados.add(sponsorContrato);
+            }
+        }
+
+        return sponsorsHabilitados.size();
+
+    }
+
+
 }

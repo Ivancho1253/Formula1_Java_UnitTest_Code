@@ -1,18 +1,24 @@
 package com.example;
+import  java.util.ArrayList;
+import java.util.List;
 
-public class Circuito {
+public class Circuito
+            implements ISponsoreable{
     
     private String nombre;
     private int longitud;
     private int vueltasCantidad;
-    private SponsorContrato sponsorC;
+    
+    //LISTA QUE SE ALMACENARAN LOS SPONSORS
+    private List <SponsorContrato> sponsorC = new ArrayList<>();
 
-    public Circuito(String nombre, int longitud, int vueltasCantidad,
-                    SponsorContrato sponsorC) {
+
+    private List <SponsorContrato> sponsorsHabilitados = new ArrayList<>();
+
+    public Circuito(String nombre, int longitud, int vueltasCantidad) {
         setNombre(nombre);
         setLongitud(longitud);
         setVueltasCantidad(vueltasCantidad);
-        setSponsorC(sponsorC);
     }
 
     public String getNombre() {
@@ -39,11 +45,36 @@ public class Circuito {
         this.vueltasCantidad = vueltasCantidad;
     }
 
-    public SponsorContrato getSponsorC() {
+    //////////////   INTERFAZ   /////////////////
+
+    @Override
+    public List <SponsorContrato> getSponsors(){
         return sponsorC;
     }
-
-    private void setSponsorC(SponsorContrato sponsorC) {
-        this.sponsorC = sponsorC;
+   
+    @Override
+    public void agregarSponsor(SponsorContrato sponsorContrato){
+        sponsorC.add(sponsorContrato);
     }
+
+    @Override
+    public void removerSponsor(){
+        sponsorC.clear();
+    }
+
+    @Override
+    public int sponsorHabilitados(){
+
+        for (SponsorContrato sponsorContrato : sponsorC) {
+            if (sponsorContrato.getFechaHasta() != null) {
+                sponsorsHabilitados.add(sponsorContrato);
+            }
+        }
+
+        return sponsorsHabilitados.size();
+
+    }
+
+
+    
 }
