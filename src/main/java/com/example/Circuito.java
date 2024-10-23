@@ -4,8 +4,9 @@ import  java.util.ArrayList;
 import java.util.List;
 
 public class Circuito
-            implements ISponsoreable{
-    
+            implements ISponsoreable
+            { 
+
     private String nombre;
     private int longitud;
     private int vueltasCantidad;

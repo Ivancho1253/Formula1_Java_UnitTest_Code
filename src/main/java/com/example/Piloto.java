@@ -5,7 +5,8 @@ import java.time.LocalDate;
 
 public class Piloto 
             extends Persona
-            implements ISponsoreable{
+            implements ISponsoreable
+            {
     
     private String escuderia;
     private List <SponsorContrato> sponsorP = new ArrayList<>();
@@ -70,4 +71,5 @@ public class Piloto
     public void setEscuderia(String escuderia) {
         this.escuderia = escuderia;
     }
+
 }

@@ -1,6 +1,7 @@
 package com.example;
 
-public class Sponsor {
+public class Sponsor
+        implements INombreParaLED{
     
     private String nombre;
 
@@ -14,5 +15,12 @@ public class Sponsor {
 
     private void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    //agrego metodo de interfaz
+    
+    @Override
+    public String getNombreParaLed(){
+        return nombre;
     }
 }

@@ -1,6 +1,7 @@
 package com.example;
 
-public class Persona {
+public class Persona 
+        implements INombreParaLED{
 
     public String nombre;
     public String nacionalidad;
@@ -26,4 +27,11 @@ public class Persona {
         this.nacionalidad = nacionalidad;
     }
     
+    //Se agrega los metodos de la interfaz 
+
+    @Override
+    public String getNombreParaLed(){
+        return nombre;
+    }
+
 }

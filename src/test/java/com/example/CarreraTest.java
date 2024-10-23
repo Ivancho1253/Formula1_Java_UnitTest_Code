@@ -62,4 +62,31 @@ public class CarreraTest {
         assertEquals(88.1, carrera.getVueltasCarrera().get(1).getTiempo());
         assertEquals(91.3, carrera.getVueltasCarrera().get(2).getTiempo());
     }
+
+    @Test
+    void ejemplo_test() {
+
+        // Crear 10 pilotos usando un bucle for
+        for (int i = 1; i <= 10; i++) {
+            Piloto piloto = new Piloto("Piloto" + i, "Argentino", "Ferrari" + i);
+            Equipo equipo = new Equipo("Equipo" + i, null, null, null);
+            
+            Circuito circuito = new Circuito("UCP");
+
+            Carrera carrera = new Carrera(circuito);
+
+            // Insertar 56 vueltas para cada piloto
+            for (int j = 1; j <= 56; j++) {
+                double tiempo = i * j * 1000;
+		        int numeroVuelta = j;
+                Vuelta vuelta = new Vuelta(piloto, equipo, tiempo, numeroVuelta);
+                carrera.agregar(vuelta);
+            }
+
+            carrera.agregar(piloto);
+        }
+
+	    //Realizar test para responder preguntas…
+
+}
 }
