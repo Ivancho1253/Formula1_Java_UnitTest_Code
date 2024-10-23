@@ -1,22 +1,26 @@
 package com.example;
 import java.util.ArrayList;
+import java.util.List;
+import java.time.LocalDate;
 
 public class Carrera {
     
-    private String fecha;
+    private LocalDate fecha;
     private Circuito circuito;
     private ArrayList <Piloto> pilotos;
+    private List <Vuelta> vueltasCarrera = new ArrayList<>();
 
-    public Carrera(String fecha, Circuito circuito, ArrayList <Piloto> pilotos) {
+    public Carrera(LocalDate fecha, Circuito circuito, ArrayList <Piloto> pilotos, List <Vuelta> vueltasCarrera) {
         setFecha(fecha);
         setCircuito(circuito);
         setPilotos(pilotos);
+        setVueltasCarrera(vueltasCarrera);
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
-    private void setFecha(String fecha) {
+    private void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
     public Circuito getCircuito() {
@@ -31,4 +35,16 @@ public class Carrera {
     private void setPilotos(ArrayList <Piloto> pilotos) {
         this.pilotos = pilotos;
     }
+
+    public List <Vuelta> getVueltasCarrera() {
+        return vueltasCarrera;
+    }
+    private void setVueltasCarrera(List <Vuelta> vueltasCarrera) {
+        this.vueltasCarrera = vueltasCarrera;
+    }
+
+    public static LocalDate fechaActual() {
+        return LocalDate.now(); // Devuelve la fecha actual usando LocalDate
+    }
+
 }

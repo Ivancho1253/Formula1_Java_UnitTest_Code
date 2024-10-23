@@ -1,4 +1,5 @@
 package com.example;
+import java.time.LocalDate;
 import  java.util.ArrayList;
 import java.util.List;
 
@@ -57,24 +58,38 @@ public class Circuito
         sponsorC.add(sponsorContrato);
     }
 
+    public void agregarSponsor(Sponsor sponsor, String ubicacion, LocalDate fechaDesde){
+        SponsorContrato sponsorContrato = new SponsorContrato(ubicacion, fechaDesde, null, sponsor);
+        sponsorC.add(sponsorContrato);
+    }
+    
     @Override
-    public void removerSponsor(){
-        sponsorC.clear();
+    public void removerSponsor(Sponsor sponsor){
+        sponsorC.removeIf(s -> s.getSponsor().equals(sponsor));
+    }
+
+    
+    public void removerSponsor(String ubicacion){
+        sponsorC.removeIf(s -> s.getUbicacion().equals(ubicacion));
+    }
+
+    //Se remueve el sponsor en dicha X ubicacion
+    public void removerSponsor(Sponsor sponsor, String ubicacion){
+        sponsorC.removeIf(s -> s.getUbicacion().equals(ubicacion) && s.getSponsor().equals(sponsor));
     }
 
     @Override
     public int sponsorHabilitados(){
 
+        LocalDate fechaActual = LocalDate.of(2024,10,21);
+
+        sponsorsHabilitados.clear();
+
         for (SponsorContrato sponsorContrato : sponsorC) {
-            if (sponsorContrato.getFechaHasta() != null) {
+            if (sponsorContrato.getFechaHasta() == null || sponsorContrato.getFechaHasta().isAfter(fechaActual)) {
                 sponsorsHabilitados.add(sponsorContrato);
             }
         }
-
         return sponsorsHabilitados.size();
-
     }
-
-
-    
 }

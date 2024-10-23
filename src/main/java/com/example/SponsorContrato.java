@@ -1,14 +1,15 @@
 package com.example;
+import java.time.LocalDate;
 
 public class SponsorContrato {
     
     private String ubicacion;
-    private String fechaDesde;
-    private String fechaHasta;
+    private LocalDate fechaDesde;
+    private LocalDate fechaHasta;
     private Sponsor sponsor;
 
 
-    public SponsorContrato(String ubicacion, String fechaDesde, String fechaHasta, Sponsor sponsor) {
+    public SponsorContrato(String ubicacion, LocalDate fechaDesde, LocalDate fechaHasta, Sponsor sponsor) {
         setUbicacion(ubicacion);
         setFechaDesde(fechaDesde);
         setFechaHasta(fechaHasta);
@@ -23,19 +24,19 @@ public class SponsorContrato {
         this.ubicacion = ubicacion;
     }
 
-    public String getFechaDesde() {
+    public LocalDate getFechaDesde() {
         return fechaDesde;
     }
 
-    private void setFechaDesde(String fechaDesde) {
+    private void setFechaDesde(LocalDate fechaDesde) {
         this.fechaDesde = fechaDesde;
     }
 
-    public String getFechaHasta() {
+    public LocalDate getFechaHasta() {
         return fechaHasta;
     }
 
-    private void setFechaHasta(String fechaHasta) {
+    private void setFechaHasta(LocalDate fechaHasta) {
         this.fechaHasta = fechaHasta;
     }
 

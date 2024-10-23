@@ -1,21 +1,28 @@
 package com.example;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.eq;
+
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class EquipoTest {
     
     @Test
     public void equipo_test() {
 
+        LocalDate fechaDesde = LocalDate.of(2024,10,21);
+        LocalDate fechaHasta = LocalDate.of(2026,10,21);
+
         Sponsor sponsorP = new Sponsor("Samsung");
-        SponsorContrato contratoSponsorP = new SponsorContrato("Casco", "10/02/2025", "10/02/2026",sponsorP);
+        SponsorContrato contratoSponsorP = new SponsorContrato("Casco", fechaDesde, fechaHasta,sponsorP);
         
         Sponsor sponsorE = new Sponsor("Pirelli");
-        SponsorContrato contratoSponsorE = new SponsorContrato("Casco", "10/02/2025", "10/02/2026",sponsorE);
+        SponsorContrato contratoSponsorE = new SponsorContrato("Mono", fechaDesde, fechaHasta,sponsorE);
         
         ArrayList<Piloto> pilotos = new ArrayList<>();
-        pilotos.add(new Piloto("Ramiro", "Argentino"));
+        Piloto piloto = new Piloto("Ramiro", "Argentino", "Williams");
+        pilotos.add(piloto);
         pilotos.get(0).agregarSponsor(contratoSponsorP);
 
         ArrayList<Mecanico> mecanicos = new ArrayList<>();
@@ -25,7 +32,7 @@ public class EquipoTest {
 
         Equipo equipo = new Equipo("Ferrari", pilotos, mecanicos, ingeniero);
 
-        equipo.agregarSponsorE(contratoSponsorE);
+        equipo.agregarSponsor(contratoSponsorE);
 
         assertEquals(1, equipo.sponsorHabilitados());
 
@@ -33,9 +40,15 @@ public class EquipoTest {
         assertEquals(pilotos, equipo.getPilotos());
         assertEquals(mecanicos, equipo.getMecanicos());
         assertEquals(ingeniero, equipo.getIngenieroPrincipal());
-        assertEquals("Pirelli", equipo.getSponsorE().get(0).getSponsor().getNombre());
+        assertEquals("Pirelli", equipo.getSponsors().get(0).getSponsor().getNombre());
         
-        equipo.removerSponsor();
-        assertEquals(0, equipo.getSponsorE().size());
+        equipo.removerSponsor(sponsorE, "Casco");
+        //No se elimina nada, debido que el equipo no tiene sponsors en el casco
+        assertEquals(1, equipo.sponsorHabilitados());
+
+        piloto.removerSponsor(sponsorP, "Casco");
+        //Se elimina el sponsor del casco
+        assertEquals(0, equipo.getPilotos().get(0).getSponsors().size());
+
     }
 }
